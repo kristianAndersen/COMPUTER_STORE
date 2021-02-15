@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans&display=swap');
+
+*,
+*:after,
+*:before{
+ -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+:root{
+    --header: rgb(41, 53, 58);
+    --headertxtcolor:rgba(255, 255, 255, 0.877);
+    --spbackground:rgba(139, 142, 155, 0.5);
+    --loanbtn: rgb(18, 196, 86);
+    --rploanbtn:rgba(65, 63, 87, 0.952);
+    --bankbtn:rgba(235, 231, 23, 0.918);
+    --workbtn:rgba(23, 108, 235, 0.918);
+    --buybtn:rgba(102, 161, 250, 0.918);
+
+}
+
+html,body{
+    width: 100%!important;
+    height: 100%!important;
+}
+
+html{
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body{
+    font-size: calc(1em + 0.5vw);
+  font-display: swap;
+  background-color: #b7b8c5;
+  font-family: 'Bebas Neue', cursive;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+
+header{
+    width: 100vw;
+    height: 10%;
+    margin-bottom: 1rem;
+    background-color:var(--header);
+    color: var(--headertxtcolor);
+    text-align: center;
+    position: relative;
+}
+main{
+    width: 100vw;
+    height: 100%;
+    position: relative;
+}
+
+.sectionparts{
+
+    width: 100vw;
+    height: 25%;
+    text-align: center;
+
+}
+
+.sectionparts_bg{
+    position: relative;
+    margin: 0 auto;
+    width: 90%;
+    height: 90%;
+    padding: 1rem;
+
+    background-color:var(--spbackground);
+}
+.presimg{
+    height: 100%;
+    width: auto;
+    float: left;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Bebas Neue';
+    letter-spacing: 0.1rem;
+    padding-top: 2rem;
+}
+
+p{
+
+    font-family: 'Open Sans';  
+}
+select, button{
+    padding: 1rem;
+    border: none;
+    border-radius: 0.2rem;
+    background-color: #fff;
+    width: 40%;
+     margin-top: 2rem;
+}
+
+#loanbtn{
+    background-color: var(--loanbtn);
+}
+
+#repayloanbtn{
+    background-color: var(--rploanbtn);
+    color: #fff;
+    display: none;
+}
+
+#bankbtn{
+    background-color: var(--bankbtn);
+   
+}
+#workbtn{
+    background-color: var(--workbtn);
+   
+}
+
+#buybtn{
+    background-color: var(--buybtn);
+   
+}
+
+@media (min-width: 768px){
+
+    .sectionparts{
+    width: 33%;
+    height: 40%;
+    float: left;
+    }
+    
+    .buynow{
+        width: 90%;
+    }
+}
+
