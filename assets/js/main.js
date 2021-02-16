@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
 
-        if ((maxLoanLimit / 2) < bankBalance.getLoan) {
+        if ((maxLoanLimit-maxLoanLimit/2) < bankBalance.getLoan) {
             alert("Your current loan of " + bankBalance.getLoan + "kr. excites your line of credits\n bank some $ and try again");
             return null;
         }
