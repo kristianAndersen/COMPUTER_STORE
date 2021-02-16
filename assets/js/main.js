@@ -1,12 +1,18 @@
+import {
+    payCheck
+} from './work.js';
+import {
+    bankBalance
+} from './bank.js';
+
 document.addEventListener('DOMContentLoaded', function () {
 
 
-    //work
     const workBtn = document.querySelector('#workbtn');
-    const payfromwork = document.querySelector('#payfromwork');
+    const bankBtn = document.querySelector('#bankbtn');
 
-    workBtn.addEventListener("click", payForWork);
-
+    workBtn.addEventListener("click", getPayedForWork);
+    bankBtn.addEventListener("click", transferToBank);
 
 
     //bank
@@ -17,14 +23,41 @@ document.addEventListener('DOMContentLoaded', function () {
     loanBtn.addEventListener("click", getLoan);
 
 
+    //work
+    const workPay = 100;
+
+    function getPayedForWork() {
+        payCheck.setPay = (payCheck.getPay + workPay)
+
+    }
+
+    function transferToBank() {
+
+        if (bankBalance.getLoan < 0) {
+
+        } else {
+            let toTransfer = payCheck.getPay
+            bankBalance.setbankBalance = bankBalance.getbankBalance + toTransfer;
+            payCheck.setPay = 0;
+        }
+
+    }
+
+    //bank
     function getLoan() {
-        const maxLoanLimit=pay.getPay * 2;
-        
-        let promt = prompt("How much would you like to loan?");
-        
+        const maxLoanLimit = bankBalance.getbankBalance * 2;
+        let promt = parseInt(prompt("How much would you like to loan?"), 0);
+
+
         //No bank lends you money if you do not got none
-        if (pay.getPay == 0) {
+        if (bankBalance.getbankBalance == 0) {
             alert("You are too poore, work some more and come back")
+            return null;
+        }
+
+
+        if ((maxLoanLimit / 2) < bankBalance.getLoan) {
+            alert("Your current loan of " + bankBalance.getLoan + "kr. excites your line of credits\n bank some $ and try again");
             return null;
         }
 
@@ -34,100 +67,27 @@ document.addEventListener('DOMContentLoaded', function () {
             if (confirm(alertStr)) {
                 console.log('get the loan anyway');
                 processLoan(maxLoanLimit);
-                
-            } else {
-                return null;
             }
         }
 
-        if(pay.getPay!=0 && promt < (pay.getPay * 2) ){
+
+        if (bankBalance.getbankBalance != 0 && promt <= maxLoanLimit) {
             console.log('good to go get the loan');
             processLoan(promt);
+
+        } else {
+            console.log("wuu")
+            return null;
         }
 
     }
 
+    function processLoan(loanToProcess) {
 
-function processLoan(loanToProcess){
+        console.log(bankBalance.getLoan)
+        bankBalance.setLoan = bankBalance.getLoan + loanToProcess;
 
-bankBalance.setLoan =loanToProcess
-
-}
-
-
-
-
-
-    
-    //bank 
-    const bankBalance = {
-        balance: 0,
-        loan: 0
     }
-
-    // getting property
-    Object.defineProperty(bankBalance, "getbankBalance", {
-        get: function () {
-            return this.balance;
-        }
-    });
-
-    // setting property
-    Object.defineProperty(bankBalance, "setbankBalance", {
-        set: function (value) {
-            this.balance = value;
-        }
-    });
-
-
-    Object.defineProperty(bankBalance, "getLoan", {
-        get: function () {
-            return this.loan;
-        }
-    });
-   
-    Object.defineProperty(bankBalance, "setLoan", {
-        set: function (value) {
-            this.loan = value;
-        }
-    });
-
-
-
-
-
-    //work
-    const workPay = 100;
-    function payForWork() {
-        pay.setPay = (pay.getPay + workPay)
-        payfromwork.innerHTML = pay.getPay;
-    }
-
-
-
-    const pay = {
-        paycheck: 0
-    }
-
-    // getting property
-    Object.defineProperty(pay, "getPay", {
-        get: function () {
-            return this.paycheck;
-        }
-    });
-
-    // setting property
-    Object.defineProperty(pay, "setPay", {
-        set: function (value) {
-            this.paycheck = value;
-        }
-    });
-
-
-
-
-
-
 
 
 })
