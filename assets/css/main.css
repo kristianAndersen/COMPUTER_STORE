@@ -108,6 +108,7 @@ select, button{
     background-color: var(--rploanbtn);
     color: #fff;
     display: none;
+    
 }
 
 #bankbtn{
