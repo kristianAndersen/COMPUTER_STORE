@@ -18,20 +18,20 @@ const createState = (state) => {
   };
 
 function render(target){
-   
+
+  
 
    if(target.pay){
         payfromwork.innerHTML=target.pay;
         bLoan.innerHTML=target.outStanding;
-     
-
+      
    }
 
    if(target.balance){
-       
+   
         bbalance.innerHTML=target.balance;
         payfromwork.innerHTML=0;
-        bTotal.innerHTML=target.balance+target.loan
+        bTotal.innerHTML=target.total;
         bLoan.innerHTML=target.loan;
         
         //toggle repay button
@@ -42,9 +42,6 @@ function render(target){
          }
 
     }
-
-
-    
 
 }
 
